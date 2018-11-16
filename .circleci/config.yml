@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/node:8-browsers
+    - image: circleci/node:8.11-browsers
     steps:
     - checkout
     - attach_workspace:
@@ -32,4 +32,17 @@ jobs:
         - node_modules
         key: v1-dependencies-{{ checksum "package.json" }}
 
-    - run: npm lint
+    - run: npm run lint
+    - run:
+        name: Run frontend tests
+        command: |
+          npm run test-headless --code-coverage
+          pwd
+          ls -al
+          ls -al tmp
+          ls -al src
+          ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json src/lcov.info
+    - run:
+        name: Upload coverage results to Code Climate
+        command: |
+              ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.frontend.json
