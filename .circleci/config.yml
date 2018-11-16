@@ -33,16 +33,58 @@ jobs:
         key: v1-dependencies-{{ checksum "package.json" }}
 
     - run: npm run lint
+#    - run:
+#        name: Run frontend tests
+#        command: |
+#          npm run test-headless --code-coverage
+#          pwd
+#          ls -al
+#          ls -al tmp
+#          ls -al src
+#          ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json src/lcov.info
+#    - run:
+#        name: Upload coverage results to Code Climate
+#        command: |
+#              ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.frontend.json
+
+
+  deploy-job:
+    docker:
+    - image: circleci/node:8.11
+    steps:
+    - checkout
+    - attach_workspace:
+        at: ~/repo/tmp
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "yarn.lock" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
+
+    - run: npm install
+
+    - save_cache:
+        paths:
+        - node_modules
+        key: v1-dependencies-{{ checksum "yarn.lock" }}
     - run:
-        name: Run frontend tests
+        name: Build app in production mode
         command: |
-          npm run test-headless --code-coverage
-          pwd
-          ls -al
-          ls -al tmp
-          ls -al src
-          ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json src/lcov.info
+          npm run build
     - run:
-        name: Upload coverage results to Code Climate
+        name: Deploy app to firebase
         command: |
-              ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.frontend.json
+          ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+    - build-job
+    - deploy-job:
+        requires:
+        - test-job
+        filters:
+          branches:
+            only: master
