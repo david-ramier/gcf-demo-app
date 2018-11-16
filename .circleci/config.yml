@@ -36,7 +36,7 @@ jobs:
     - run:
         name: Run frontend tests
         command: |
-          npm test --code-coverage
+          npm test-headless --code-coverage
           ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json coverage/lcov.info
     - run:
         name: Upload coverage results to Code Climate
