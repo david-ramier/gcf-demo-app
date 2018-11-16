@@ -1,5 +1,9 @@
 # GcfDemoApp
 
+[![CircleCI](https://circleci.com/gh/marcomaccio/gcf-demo-app.svg?style=svg)](https://circleci.com/gh/marcomaccio/gcf-demo-app)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e609d54e880195588b22/test_coverage)](https://codeclimate.com/github/marcomaccio/gcf-demo-app/test_coverage)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
 
 ## Development server
