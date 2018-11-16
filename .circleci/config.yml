@@ -38,7 +38,7 @@ jobs:
         command: |
           npm test --code-coverage
           ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json coverage/lcov.info
-        - run:
-            name: Upload coverage results to Code Climate
-            command: |
+    - run:
+        name: Upload coverage results to Code Climate
+        command: |
               ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.frontend.json
