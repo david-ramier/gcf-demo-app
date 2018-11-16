@@ -38,7 +38,9 @@ jobs:
         command: |
           npm run test-headless --code-coverage
           pwd
-          ls
+          ls -al
+          ls -al tmp
+          ls -al src/coverage
           ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json src/coverage/lcov.info
     - run:
         name: Upload coverage results to Code Climate
