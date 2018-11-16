@@ -40,7 +40,7 @@ jobs:
           pwd
           ls -al
           ls -al tmp
-          ls -al src/coverage
+          ls -al src
           ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json src/coverage/lcov.info
     - run:
         name: Upload coverage results to Code Climate
