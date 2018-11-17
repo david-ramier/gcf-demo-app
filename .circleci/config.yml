@@ -46,6 +46,10 @@ jobs:
 #        name: Upload coverage results to Code Climate
 #        command: |
 #              ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.frontend.json
+    - persist_to_workspace:
+        root: .
+        paths:
+        - .
 
 
   deploy-job:
