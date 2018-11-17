@@ -74,9 +74,9 @@ jobs:
         command: |
           npm run build
     - run:
-        name: Deploy app to firebase
+        name: Deploy app  in Master branch to firebase
         command: |
-          ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+          ln -s ./node_modules/.bin/firebase . && ./firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 workflows:
   version: 2
