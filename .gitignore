@@ -1,4 +1,5 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
+.app-env   # File to hold Firebase API KEY
 
 # compiled output
 /dist
