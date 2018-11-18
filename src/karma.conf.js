@@ -9,6 +9,7 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
+      require('karma-coverage'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
@@ -20,7 +21,11 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly'],
       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'coverage'],
+    coverageReporter: {
+      type : 'lcov',
+      dir : 'coverage/'
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
@@ -28,14 +33,13 @@ module.exports = function (config) {
     browsers: ['ChromeHeadless'],
     singleRun: false,
     customLaunchers: {
-      ChromeHeadless: {
+      ChromeNoSandbox: {
         base: 'Chrome',
-        flags: [
-          '--headless',
-          '--disable-gpu',
-          // Without a remote debugging port, Google Chrome exits immediately.
-          '--remote-debugging-port=9222',
-        ],
+        flags: ['--no-sandbox']
+      },
+      ChromeNoSandboxHeadless: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
       }
     }
   });
