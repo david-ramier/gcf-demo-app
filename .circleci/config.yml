@@ -33,14 +33,15 @@ jobs:
         key: v1-dependencies-{{ checksum "package.json" }}
 
     - run: npm run lint
-#    - run:
-#        name: Run frontend tests
-#        command: |
-#          npm run test-headless --code-coverage
-#          pwd
-#          ls -al
-#          ls -al tmp
-#          ls -al src
+    - run:
+        name: Run frontend tests
+        command: |
+          ./tmp/cc-test-reporter before-build
+          npm run test:prod-headless --code-coverage
+          pwd
+          ls -al
+          ls -al tmp
+          ls -al src
 #          ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json src/lcov.info
 #    - run:
 #        name: Upload coverage results to Code Climate

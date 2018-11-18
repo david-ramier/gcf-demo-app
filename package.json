@@ -6,7 +6,8 @@
     "start": "ng serve --host 0.0.0.0",
     "build": "ng build --prod",
     "test": "ng test",
-    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:prod": "ng test --watch=false --no-progress --browsers=ChromeNoSandbox",
+    "test:prod-headless": "ng test --watch=false --no-progress --browsers=ChromeNoSandboxHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
