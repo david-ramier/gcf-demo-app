@@ -83,11 +83,6 @@ jobs:
     - run:
         name: Deploy app  in Master branch to firebase
         command: |
-          pwd
-          echo $PATH
-          echo "Files at current dir "
-          ls -al
-          ln -s ./node_modules/.bin/firebase .
           echo "Lanching firebase command"
           firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
