@@ -89,7 +89,7 @@ jobs:
           ls -al
           ln -s ./node_modules/.bin/firebase .
           echo "Lanching firebase command"
-          ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+          firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 workflows:
   version: 2
