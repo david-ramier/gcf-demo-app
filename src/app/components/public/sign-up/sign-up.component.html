@@ -1,0 +1,120 @@
+
+<mat-horizontal-stepper [linear]="isLinear" #signUpStepper>
+
+  <mat-step [stepControl]="accountInfoFormGroup">
+    <!-- Account Info Form Start -->
+    <form class="form-container"
+          [formGroup]="accountInfoFormGroup"
+          (ngSubmit)="onAccountInfoFormNext()"
+          fxLayout="column" fxLayoutGap="32px">
+
+      <ng-template matStepLabel>Account Info</ng-template>
+
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="emailCtrl" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" formControlName="passwordCtrl" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPasswordCtrl" required>
+      </mat-form-field>
+    </form>
+
+    <!-- Account Info Form End -->
+    <div>
+      <button mat-raised-button (click)="signUpStepper.reset()">Reset</button>
+      <button mat-raised-button matStepperNext (click)="onAccountInfoFormNext()" color="primary">Next</button>
+    </div>
+
+  </mat-step>
+
+  <mat-step [stepControl]="profileInfoFormGroup" fxLayout="column wrap" fxLayout.xs="row wrap">
+    <!-- Profile Info Form Start -->
+    <div class="signUpForm" fxFlex="0 1 calc(25%)">
+      <form class="form-container"
+            [formGroup]="profileInfoFormGroup"
+            fxLayout="column" fxLayoutGap="32px">
+
+        <ng-template matStepLabel>Profile Info</ng-template>
+
+        <mat-form-field>
+          <mat-select formControlName="profileTypeCtrl" placeholder="Profile Type" required [(value)]="selectedProfile">
+            <mat-option *ngFor="let profileType of profileTypes" [value]="profileType.name">{{ profileType.name }}</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Firstname" formControlName="firstnameCtrl" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Lastname" formControlName="lastnameCtrl" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="addressCtrl" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Zip Code" formControlName="zipCodeCtrl" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="City" formControlName="cityCtrl" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Country" formControlName="countryCtrl" required>
+        </mat-form-field>
+
+        <button mat-raised-button matStepperNext (click)="onAddressLookup()" color="primary">Address Lookup</button>
+
+        <mat-form-field>
+          <input matInput placeholder="Telephone" formControlName="telephoneCtrl" required>
+        </mat-form-field>
+
+        <mat-radio-group formControlName="genderCtrl" [(value)]="selectedGender">
+          <mat-radio-button value="F">F</mat-radio-button>
+          <mat-radio-button value="M">M</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dobCtrl">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </form>
+    </div>
+    <div class="mapLookup" fxFlex="0 1 calc(25%)">
+
+      <agm-map
+        [latitude]="location?.lat"
+        [longitude]="location?.lng"
+        [zoom]="8"
+        [disableDefaultUI]="false"
+        [zoomControl]="false"
+        gestureHandling="cooperative"
+        fxAlignLayout="center">
+
+          <agm-marker
+            [latitude]="location?.lat"
+            [longitude]="location?.lng">
+          </agm-marker>
+
+      </agm-map>
+    </div>
+    <!-- Profile Info Form End -->
+    <div>
+      <button mat-raised-button matStepperPrevious color="primary">Previous</button>
+      <button mat-raised-button (click)="signUpStepper.reset()">Reset</button>
+      <button mat-raised-button matStepperNext (click)="onSignUpFormSubmit()" color="primary">Submit</button>
+    </div>
+
+  </mat-step>
+
+</mat-horizontal-stepper>
