@@ -93,7 +93,7 @@ export class SignUpComponent implements OnInit {
 
   }
 
-  onAddressLookup(){
+  onAddressLookup() {
     const address = <Address>{};
     address.address = this.profileInfoFormGroup.get('addressCtrl').value;
     address.zipCode = this.profileInfoFormGroup.get('zipCodeCtrl').value;
@@ -139,13 +139,13 @@ export class SignUpComponent implements OnInit {
   onValueChangedOnAccountInfo(data?: any) {
     if (!this.accountInfoFormGroup) { return; }
     const form = this.accountInfoFormGroup;
-    for (const field in this.formErrors) {
+    for (const field of Object.keys(this.formErrors) ) {
       // clear previous error message (if any)
       this.formErrors[field] = '';
       const control = form.get(field);
       if (control && control.dirty && !control.valid) {
         const messages = this.validationMessages[field];
-        for (const key in control.errors) {
+        for (const key of Object.keys(control.errors) ) {
           this.formErrors[field] += messages[key] + ' ';
         }
       }
@@ -155,13 +155,13 @@ export class SignUpComponent implements OnInit {
   onValueChangedOnProfileInfo(data?: any) {
     if (!this.profileInfoFormGroup) { return; }
     const form = this.profileInfoFormGroup;
-    for (const field in this.formErrors) {
+    for (const field of Object.keys(this.formErrors) ) {
       // clear previous error message (if any)
       this.formErrors[field] = '';
       const control = form.get(field);
       if (control && control.dirty && !control.valid) {
         const messages = this.validationMessages[field];
-        for (const key in control.errors) {
+        for (const key of Object.keys(control.errors) ) {
           this.formErrors[field] += messages[key] + ' ';
         }
       }
