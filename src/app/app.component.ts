@@ -27,6 +27,11 @@ export class AppComponent {
 
   }
 
+  goToSignIn() {
+    // Send the user to the Sign Up Page
+    this.router.navigate(['/signin']);
+  }
+
   goToSignUp() {
     // Send the user to the Sign Up Page
     this.router.navigate(['/signup']);

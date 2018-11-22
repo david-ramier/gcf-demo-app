@@ -5,6 +5,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {Router} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,36 @@ export class AuthenticationService {
       })
       .catch(error => this.handleError(error) );
 
+  }
+
+  signInWithEmailAndPassword(email: string, password: string) {
+    return this.afAuth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(authResult => {
+        console.log('AppUser: ' + authResult.user.email + ' has been successfully signedin in the app with uid: ' + authResult.user.uid);
+
+        // this.updateUserData(appUser);
+        this.router.navigate(['/welcome']);
+      })
+      .catch(error => this.handleError(error));
+  }
+
+
+  signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return this.oAuthLogin(provider);
+  }
+
+
+  signInWithTwitter() {
+    const provider = new firebase.auth.TwitterAuthProvider();
+    return this.oAuthLogin(provider);
+  }
+
+
+  signInWithGithub() {
+    const provider = new firebase.auth.GithubAuthProvider();
+    return this.oAuthLogin(provider);
   }
 
   signOut() {

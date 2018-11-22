@@ -59,6 +59,7 @@ import { SignUpComponent } from './components/public/sign-up/sign-up.component';
 import { AuthenticationService } from './services/authentication.service';
 import { LocationService } from './services/location.service';
 import { WelcomeComponent } from './components/auth/welcome/welcome.component';
+import { SignInComponent } from './components/public/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { WelcomeComponent } from './components/auth/welcome/welcome.component';
     PageNotFoundComponent,
     PublicHomeComponent,
     SignUpComponent,
+    SignInComponent,
     WelcomeComponent
   ],
   imports: [
