@@ -19,12 +19,22 @@ export class SignInComponent implements OnInit {
   }
 
 
-  onSignIn() {
+  onSignInWithEmailAndPassword() {
     this.authenticationService.signInWithEmailAndPassword(
       this.signInFormGroup.controls['emailCtrl'].value,
       this.signInFormGroup.controls['passwordCtrl'].value
     );
   }
+
+  onSignInWithGoogle() {
+    this.authenticationService.signInWithGoogle();
+  }
+
+  /**
+  onSignInWithTwitter() {
+    this.authenticationService.signInWithTwitter();
+  }
+  */
 
   private buildForm(): void {
     this.signInFormGroup = this.formBuilder.group({
