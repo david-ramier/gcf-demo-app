@@ -173,11 +173,13 @@ export class SignUpComponent implements OnInit {
     const location = addressToBeLookedUp.address + ' ' + addressToBeLookedUp.zipCode  + ' ' + addressToBeLookedUp.city;
     this.geocodeService.geocodeAddress(location)
       .subscribe(
-        location => {
-          this.location = location;
+
+        retrievedLocation => {
+          this.location = retrievedLocation;
           this.loading = false;
           this.ref.detectChanges();
         }
+
       );
   }
 
