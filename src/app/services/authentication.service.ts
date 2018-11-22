@@ -20,9 +20,9 @@ export class AuthenticationService {
    * AngularFireStorage cdn
    * Angular Router in order to redirect to the correct page after each method
    *
-   * @param afAuth
-   * @param afFirestore
-   * @param router
+   * @param afAuth angularFirebase2 Authentication
+   * @param afFirestore angularFirebase2 Firestore
+   * @param router amgular Router
    */
   constructor(private afAuth: AngularFireAuth,
               private afFirestore: AngularFirestore,
@@ -41,8 +41,8 @@ export class AuthenticationService {
 
   /**
    * This method allows to SignUp an anonymous user with Email and Password
-   * @param email
-   * @param password
+   * @param email   email used to identifz the customer
+   * @param password password
    */
   signUpWithEmailAndPassword(appUser: AppUser, password: string) {
     return this.afAuth.auth
@@ -73,7 +73,7 @@ export class AuthenticationService {
 
   /**
    *
-   * @param provider
+   * @param provider OAuth Provider Google | Twitter | Github
    */
   private oAuthLogin(provider: any) {
     return this.afAuth.auth
@@ -87,7 +87,7 @@ export class AuthenticationService {
 
   /**
    *
-   * @param user
+   * @param user AppUser extended user
    */
   private updateUserData(user: AppUser) {
     const userRef: AngularFirestoreDocument<any> = this.afFirestore.doc(`users/${user.uid}`);
