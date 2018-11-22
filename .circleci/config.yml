@@ -33,20 +33,20 @@ jobs:
         key: v1-dependencies-{{ checksum "package.json" }}
 
     - run: npm run lint
-    - run:
-        name: Run frontend tests
-        command: |
-          ./tmp/cc-test-reporter before-build
-          npm run test:prod-headless
-          pwd
-          ls -al
-          ls -al tmp
-          ls -al src
-          ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json coverage/lcov.info
-    - run:
-        name: Upload coverage results to Code Climate
-        command: |
-              ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.frontend.json
+#    - run:
+#        name: Run frontend tests
+#        command: |
+#          ./tmp/cc-test-reporter before-build
+#          npm run test:prod-headless
+#          pwd
+#          ls -al
+#          ls -al tmp
+#          ls -al src
+#          ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json coverage/lcov.info
+#    - run:
+#        name: Upload coverage results to Code Climate
+#        command: |
+#              ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.frontend.json
     - persist_to_workspace:
         root: .
         paths:

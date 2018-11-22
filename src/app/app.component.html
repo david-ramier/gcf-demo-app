@@ -1,20 +1,83 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<mat-sidenav-container class="example-container" fullscreen>
 
+  <mat-sidenav #sidenav class="example-sidenav">
+    <mat-list>
+      <mat-list-item [routerLink]="['/home']" class="nav-bar-button">Home</mat-list-item>
+
+    </mat-list>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content">
+
+    <header role="banner">
+      <mat-toolbar color="primary">
+        <button type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>Google Cloud Fest</span>
+        <!--
+        <img class="logoNavbar" [src]="fullImagePath">
+        -->
+        <span class="toolbar-spacer"></span>
+
+        <div *ngIf="auth.user | async; then authenticated else guest">
+
+        </div>
+
+        <ng-template #guest>
+          <button mat-raised-button color="primary" (click)="goToSignIn()">Signin</button>
+          <button mat-raised-button color="primary" (click)="goToSignUp()">SignUp</button>
+        </ng-template>
+
+        <ng-template #authenticated>
+
+          <div *ngIf="auth.user | async as user">
+            <span>{{ user.firstname }} {{ user.lastname }}</span>
+            <mat-icon class="md-24" class="example-icon">account_circle</mat-icon>
+
+            <button mat-icon-button [matMenuTriggerFor]="menuUser">
+              <mat-icon class="md-24">more_vert</mat-icon>
+            </button>
+
+            <mat-menu #menuUser="matMenu">
+              <!-- AccountInfo Menu Item -->
+              <button mat-menu-item color="primary" (click)="goToPersonalInfo(0)">
+                <mat-icon class="md-18">account_circle</mat-icon>
+                <span>Account info</span>
+              </button>
+
+              <!-- ProfileInfo Menu Item -->
+              <button mat-menu-item color="primary" (click)="goToPersonalInfo(1)">
+                <mat-icon class="md-18">face</mat-icon>
+                <span>Profile info</span>
+              </button>
+
+              <!-- Sign Out Menu Item -->
+              <button mat-menu-item color="primary" (click)="goToSignOut()">
+                <mat-icon class="md-18">exit_to_app</mat-icon>
+                <span>Sign out</span>
+              </button>
+            </mat-menu>
+          </div>
+
+        </ng-template>
+
+      </mat-toolbar>
+    </header>
+
+    <main class="content">
+
+      <router-outlet></router-outlet>
+
+    </main>
+
+    <footer class="footer">
+
+    </footer>
+
+  </div>
+
+
+</mat-sidenav-container>
