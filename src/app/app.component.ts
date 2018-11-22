@@ -15,10 +15,10 @@ export class AppComponent {
 
   /**
    *
-   * @param snackBar
-   * @param router
-   * @param breakpointObserver
-   * @param auth
+   * @param snackBar snackBar useed to pop up messages when sign in and sign
+   * @param router   router that handles the various url path
+   * @param breakpointObserver   breakpointObserver
+   * @param auth     Authentication service injected by the framework
    */
   constructor(public snackBar: MatSnackBar,
               private router: Router,
