@@ -1,51 +1,41 @@
-<div
-  gdAreas="header header | side content | footer footer"
-  gdGaps="16px"
-  gdRows="auto auto auto"
-  gdAreas.lt-md="header | side | content | footer"
-  gdRows.lt-md="auto auto auto auto">
+<div gdAreas="header header | side content | footer footer" gdGaps="16px" gdRows="auto auto auto" gdAreas.lt-md="header header | side content | footer footer"
+ gdRows.lt-md="auto auto auto" gdAreas.lt-sm="header | side | content | footer" gdRows.lt-sm="auto auto auto">
 
-  <div gdArea="header">
-    <h1>Sign In</h1>
-    <p>Not a member? Please <a routerLink="/signup">signup</a> instead.</p>
-  </div>
+	<div gdArea="header">
+		<h1>Sign In</h1>
+		<p>Not a member? Please <a routerLink="/signup">signup</a> instead.</p>
+	</div>
+	<div gdArea="side">
+    <div style="max-width: 400px">
+		<form [formGroup]="signInFormGroup" (ngSubmit)="onSignInWithEmailAndPassword()" fxLayout="column">
 
-  <form class="form-container"
-        [formGroup]="signInFormGroup"
-        (ngSubmit)="onSignInWithEmailAndPassword()">
 
-    <div gdArea="side" fxFlex="0 1 calc(50% - 32px)">
-      <div fxLayout="row wrap">
-          <mat-form-field>
-            <input matInput placeholder="Email" formControlName="emailCtrl" required>
+			<mat-form-field>
+				<input matInput placeholder="Email" formControlName="emailCtrl" required>
           </mat-form-field>
 
           <mat-form-field>
             <input matInput type="password" placeholder="Password" formControlName="passwordCtrl" required>
           </mat-form-field>
 
-          <div>
-            <button mat-raised-button (click)="signInFormGroup.reset()">Reset</button>
+        <div>  
+            <button mat-raised-button (click)="signInFormGroup.reset()">Reset</button>&nbsp;&nbsp;
             <button mat-raised-button type="submit"  color="primary">Next</button>
-          </div>
-      </div>
+            </div>
+      </form>    
+    </div>
+    
+</div>
+    <div gdArea="content">
+      <br><br>
+      <div>
+      <button mat-raised-button (click)="onSignInWithGoogle()" class="btn-auth btn-google">Sign in with Google</button>
+      <br><br>
+      <button mat-raised-button (click)="onSignInWithGitHub()" class="btn-auth btn-github">Sign in with Github</button>
+       <div>
     </div>
 
-    <div gdArea="content" fxFlex="0 1 calc(50% - 32px)">
-      <button mat-raised-button (click)="onSignInWithGoogle()">Sign in with Google</button>
-    </div>
-
-  </form>
+  
 
   <div gdArea="footer"></div>
-
 </div>
-
-
-
-
-
-
-
-
-
