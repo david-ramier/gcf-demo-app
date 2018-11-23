@@ -38,7 +38,7 @@ export class UserListComponent implements OnInit {
   }
 
   openUserEditDialog(user: AppUser) {
-    this.userDetailsDialogRef = this.dialog.open(UserDetailsEditComponent,{
+    this.userDetailsDialogRef = this.dialog.open(UserDetailsEditComponent, {
       hasBackdrop: true,
       data: user,
       width: '100%',
