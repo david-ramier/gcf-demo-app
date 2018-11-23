@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 // Form module import
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Material Design: Navigation Controller
-import { MatToolbarModule, MatMenuModule, MatSidenavModule} from '@angular/material';
+import { MatToolbarModule, MatMenuModule, MatSidenavModule } from '@angular/material';
 
 // Material Design:  Form Controller
 import { MatInputModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule } from '@angular/material';
@@ -60,6 +60,10 @@ import { AuthenticationService } from './services/authentication.service';
 import { LocationService } from './services/location.service';
 import { WelcomeComponent } from './components/auth/welcome/welcome.component';
 import { SignInComponent } from './components/public/sign-in/sign-in.component';
+import { UserListComponent } from './components/auth/user-list/user-list.component';
+import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
+import {UserManagementService} from './services/user-management.service';
+import { UserDetailsEditComponent } from './components/auth/user-details-edit/user-details-edit.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +72,10 @@ import { SignInComponent } from './components/public/sign-in/sign-in.component';
     PublicHomeComponent,
     SignUpComponent,
     SignInComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    UserListComponent,
+    UserDetailsComponent,
+    UserDetailsEditComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +85,7 @@ import { SignInComponent } from './components/public/sign-in/sign-in.component';
     AppRoutingModule,
     HttpClientModule,
     MatToolbarModule, MatMenuModule, MatSidenavModule,
-    MatInputModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule ,
+    MatInputModule, MatGridListModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule ,
     MatAutocompleteModule, MatSelectModule, MatRadioModule,
     MatListModule, MatCardModule, MatStepperModule, MatTabsModule,
     MatIconModule, MatButtonModule, MatChipsModule,
@@ -89,7 +96,6 @@ import { SignInComponent } from './components/public/sign-in/sign-in.component';
       libraries: ['places']
     }),
     AgmSnazzyInfoWindowModule,
-    MatGridListModule,
     LayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
@@ -97,7 +103,10 @@ import { SignInComponent } from './components/public/sign-in/sign-in.component';
     AngularFirestoreModule,
     AngularFireStorageModule
   ],
-  providers: [AuthenticationService, LocationService],
+  entryComponents: [
+    UserDetailsEditComponent
+  ],
+  providers: [AuthenticationService, LocationService, UserManagementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

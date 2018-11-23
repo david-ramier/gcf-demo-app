@@ -13,6 +13,8 @@ export interface AppUser {
   gender?:        string;
   birthDate?:     string;
 
-  address?:        Address;
+  onlineStatus?:  boolean;
+
+  address?:       Address;
 
 }

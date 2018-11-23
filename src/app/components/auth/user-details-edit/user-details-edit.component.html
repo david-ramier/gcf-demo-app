@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>
+  Modify User details form
+</h1>
+
+<mat-dialog-content class="form-container" >
+
+  <mat-form-field>
+    <input matInput nput [(ngModel)]="user.firstname" placeholder="Firstname">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="user.lastname" placeholder="Lastname">
+  </mat-form-field>
+
+  <!--
+  <mat-form-field>
+    <mat-checkbox [(ngModel)]="user.onlineStatus"></mat-checkbox>
+  </mat-form-field>
+  -->
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="user.address.address" placeholder="Address">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="user.address.zipCode" placeholder="Zip Code">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="user.address.city" placeholder="City">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="user.address.country" placeholder="Country">
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <button mat-raised-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button (click)="onUpdateUser()" color="primary">Save</button>
+
+</mat-dialog-actions>
