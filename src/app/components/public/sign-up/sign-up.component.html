@@ -25,7 +25,7 @@
 
     <!-- Account Info Form End -->
     <div>
-      <button mat-raised-button (click)="signUpStepper.reset()">Reset</button>
+      <button mat-raised-button (click)="signUpStepper.reset()">Reset</button>&nbsp;&nbsp;
       <button mat-raised-button matStepperNext (click)="onAccountInfoFormNext()" color="primary">Next</button>
     </div>
 
@@ -55,7 +55,7 @@
           <input matInput placeholder="Lastname" formControlName="lastnameCtrl" required>
         </mat-form-field>
         <div fxLayout="row wrap" fxLayoutGap="20px">
-        <div fxFlex="">
+        <div fxFlex="0 1 calc(50%-20px)">
           <div fxLayout="column" fxLayoutGap="32px">
           <mat-form-field>
           <input matInput placeholder="Address" formControlName="addressCtrl" required>
@@ -99,7 +99,7 @@
         </mat-form-field>
 
         <mat-radio-group formControlName="genderCtrl" [(value)]="selectedGender">
-          <mat-radio-button value="F">F</mat-radio-button>
+          <mat-radio-button value="F">F</mat-radio-button>&nbsp;&nbsp;
           <mat-radio-button value="M">M</mat-radio-button>
         </mat-radio-group>
 
@@ -111,14 +111,11 @@
 
       </form>
     </div>
-    <div class="mapLookup" fxFlex="0 1 calc(25%)">
-
-     
-    </div>
+   
     <!-- Profile Info Form End -->
     <div>
-      <button mat-raised-button matStepperPrevious color="primary">Previous</button>
-      <button mat-raised-button (click)="signUpStepper.reset()">Reset</button>
+      <button mat-raised-button matStepperPrevious color="primary">Previous</button>&nbsp;&nbsp;
+      <button mat-raised-button (click)="signUpStepper.reset()">Reset</button>&nbsp;&nbsp;
       <button mat-raised-button matStepperNext (click)="onSignUpFormSubmit()" color="primary">Submit</button>
     </div>
 

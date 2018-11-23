@@ -64,6 +64,7 @@ import { UserListComponent } from './components/auth/user-list/user-list.compone
 import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
 import {UserManagementService} from './services/user-management.service';
 import { UserDetailsEditComponent } from './components/auth/user-details-edit/user-details-edit.component';
+import { CardComponent } from './components/public/card/card.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { UserDetailsEditComponent } from './components/auth/user-details-edit/us
     WelcomeComponent,
     UserListComponent,
     UserDetailsComponent,
-    UserDetailsEditComponent
+    UserDetailsEditComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

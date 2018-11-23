@@ -24,7 +24,7 @@ $custom-theme: mat-light-theme($custom-theme-primary,$custom-theme-accent, $cust
 }
 
 .card-container{
-  background-color: mat-color($custom-theme-accent, 300);
+  /*background-color: mat-color($custom-theme-accent, 300);*/
   width: 100%;
   justify-content: center;
 }
