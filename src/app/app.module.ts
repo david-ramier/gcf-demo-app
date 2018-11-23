@@ -62,8 +62,13 @@ import { WelcomeComponent } from './components/auth/welcome/welcome.component';
 import { SignInComponent } from './components/public/sign-in/sign-in.component';
 import { UserListComponent } from './components/auth/user-list/user-list.component';
 import { UserDetailsComponent } from './components/auth/user-details/user-details.component';
-import {UserManagementService} from './services/user-management.service';
+import { UserManagementService } from './services/user-management.service';
 import { UserDetailsEditComponent } from './components/auth/user-details-edit/user-details-edit.component';
+import { PublisherComponent } from './components/auth/publisher/publisher.component';
+import { SubscriberComponent } from './components/auth/subscriber/subscriber.component';
+import { OpentokService } from './services/opentok.service';
+
+
 
 @NgModule({
   declarations: [
@@ -75,7 +80,9 @@ import { UserDetailsEditComponent } from './components/auth/user-details-edit/us
     WelcomeComponent,
     UserListComponent,
     UserDetailsComponent,
-    UserDetailsEditComponent
+    UserDetailsEditComponent,
+    PublisherComponent,
+    SubscriberComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +113,7 @@ import { UserDetailsEditComponent } from './components/auth/user-details-edit/us
   entryComponents: [
     UserDetailsEditComponent
   ],
-  providers: [AuthenticationService, LocationService, UserManagementService],
+  providers: [AuthenticationService, LocationService, UserManagementService, OpentokService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

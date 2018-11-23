@@ -3,3 +3,9 @@
 </p>
 
 <app-user-list></app-user-list>
+
+
+<div *ngIf="session">
+  <app-publisher [session]="session"></app-publisher>
+  <app-subscriber *ngFor="let stream of streams" [stream]="stream" [session]="session"></app-subscriber>
+</div>
