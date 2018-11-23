@@ -1,0 +1,60 @@
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- UID Column -->
+  <ng-container matColumnDef="uid">
+    <th mat-header-cell *matHeaderCellDef> UID. </th>
+    <td mat-cell *matCellDef="let user"> {{ user.uid }} </td>
+  </ng-container>
+
+  <!-- COUNTRY Column -->
+  <ng-container matColumnDef="country">
+    <th mat-header-cell *matHeaderCellDef> Country </th>
+    <td mat-cell *matCellDef="let user"> {{ user.address.country }} </td>
+  </ng-container>
+
+  <!-- FIRSTNAME Column -->
+  <ng-container matColumnDef="firstname">
+    <th mat-header-cell *matHeaderCellDef> FirstName </th>
+    <td mat-cell *matCellDef="let user"> {{ user.firstname }} </td>
+  </ng-container>
+
+  <!-- LASTNAME Column -->
+  <ng-container matColumnDef="lastname">
+    <th mat-header-cell *matHeaderCellDef> LastName </th>
+    <td mat-cell *matCellDef="let user"> {{ user.lastname }} </td>
+  </ng-container>
+
+  <!-- PROFILETYPE Column -->
+  <ng-container matColumnDef="profileType" >
+    <th mat-header-cell *matHeaderCellDef> Profile Type </th>
+    <td mat-cell *matCellDef="let user"> <mat-icon>admin</mat-icon> {{ user.profileType }} </td>
+  </ng-container>
+
+
+  <!-- ONLINE Column -->
+  <ng-container matColumnDef="onlineStatus" >
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+
+      <td mat-cell *matCellDef="let user">
+        <ng-template *ngIf="user.onlineStatus; then online; else offline"></ng-template>
+        <ng-template #online><mat-icon>camera</mat-icon></ng-template>
+        <ng-template #offline><mat-icon>offline_bolt</mat-icon></ng-template>
+      </td>
+  </ng-container>
+
+  <!-- EDIT Column -->
+  <ng-container matColumnDef="edit" >
+    <th mat-header-cell *matHeaderCellDef> Edit </th>
+    <td mat-cell *matCellDef="let user"> <mat-icon (click)="openUserEditDialog(user)">edit</mat-icon> </td>
+  </ng-container>
+
+  <!-- DELETE Column -->
+  <ng-container matColumnDef="delete" >
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let user"> <mat-icon>delete</mat-icon> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

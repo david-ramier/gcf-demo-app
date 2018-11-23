@@ -10,6 +10,7 @@ import { SignUpComponent } from './components/public/sign-up/sign-up.component';
 import { SignInComponent } from './components/public/sign-in/sign-in.component';
 
 import { WelcomeComponent } from './components/auth/welcome/welcome.component';
+import {UserListComponent} from './components/auth/user-list/user-list.component';
 
 /**
 import { WhoWeAreComponent } from './components/public/who-we-are/who-we-are.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'signin',         component: SignInComponent  },
 //  { path: 'signout',        component: SignOutComponent  },
   { path: 'welcome',        component: WelcomeComponent, canActivate: [AuthGuard]  },
+  { path: 'user-list',      component: UserListComponent, canActivate: [AuthGuard]  },
   {
     path: '',
     redirectTo: '/home',
