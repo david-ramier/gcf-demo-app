@@ -55,24 +55,46 @@
           <input matInput placeholder="Lastname" formControlName="lastnameCtrl" required>
         </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Address" formControlName="addressCtrl" required>
-        </mat-form-field>
+        <div fxLayout="row wrap" fxLayoutGap="20px">
+          <div fxFlex="">
+            <div fxLayout="column" fxLayoutGap="32px">
+              <mat-form-field>
+                <input matInput placeholder="Address" formControlName="addressCtrl" required>
+              </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Zip Code" formControlName="zipCodeCtrl" required>
-        </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Zip Code" formControlName="zipCodeCtrl" required>
+              </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="City" formControlName="cityCtrl" required>
-        </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="City" formControlName="cityCtrl" required>
+              </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Country" formControlName="countryCtrl" required>
-        </mat-form-field>
+              <mat-form-field>
+                <input matInput placeholder="Country" formControlName="countryCtrl" required>
+              </mat-form-field>
 
-        <button mat-raised-button matStepperNext (click)="onAddressLookup()" color="primary">Address Lookup</button>
+              <button mat-raised-button matStepperNext (click)="onAddressLookup()" color="primary">Address Lookup</button>
+          </div>
+        </div>
+        <div fxFlex="0 1 calc(50%-20px)">
+          <agm-map
+            [latitude]="location?.lat"
+            [longitude]="location?.lng"
+            [zoom]="8"
+            [disableDefaultUI]="false"
+            [zoomControl]="false"
+            gestureHandling="cooperative"
+            fxAlignLayout="center">
 
+            <agm-marker
+              [latitude]="location?.lat"
+              [longitude]="location?.lng">
+            </agm-marker>
+
+          </agm-map>
+        </div>
+      </div>
         <mat-form-field>
           <input matInput placeholder="Telephone" formControlName="telephoneCtrl" required>
         </mat-form-field>
@@ -92,21 +114,7 @@
     </div>
     <div class="mapLookup" fxFlex="0 1 calc(25%)">
 
-      <agm-map
-        [latitude]="location?.lat"
-        [longitude]="location?.lng"
-        [zoom]="8"
-        [disableDefaultUI]="false"
-        [zoomControl]="false"
-        gestureHandling="cooperative"
-        fxAlignLayout="center">
 
-          <agm-marker
-            [latitude]="location?.lat"
-            [longitude]="location?.lng">
-          </agm-marker>
-
-      </agm-map>
     </div>
     <!-- Profile Info Form End -->
     <div>
