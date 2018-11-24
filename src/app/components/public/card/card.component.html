@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar>{{ feature.type | slice:0:1 | uppercase}}</div>
+    <mat-card-title> {{ feature.title}} </mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    {{feature.description}}
+  </mat-card-content>
+</mat-card>

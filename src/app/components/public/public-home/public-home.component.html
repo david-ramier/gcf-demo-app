@@ -1,3 +1,18 @@
-<p>
-  public-home works!
-</p>
+<h4>YOUR SOLUTION TO VIDEO CHAT</h4>
+<div class="card-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px grid">
+  <app-card
+    fxFlex="0 1 calc(25%-20px)"
+    fxFlex.lt-md="0 1 calc(50%-20px)"
+    fxFlex.lt-sm="100%"
+    *ngFor="let feature of features" [feature]="feature"></app-card>
+
+  <div fxFlex="0 1 calc(25%-20px)"
+       fxFlex.lt-md="0 1 calc(50%-20px)"
+       fxFlex.lt-sm="100%"></div>
+  <div fxFlex="0 1 calc(25%-20px)"
+       fxFlex.lt-md="0 1 calc(50%-20px)"
+       fxFlex.lt-sm="100%"></div>
+  <div fxFlex="0 1 calc(25%-20px)"
+       fxFlex.lt-md="0 1 calc(50%-20px)"
+       fxFlex.lt-sm="100%"></div>
+</div>

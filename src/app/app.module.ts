@@ -68,6 +68,9 @@ import { PublisherComponent } from './components/auth/publisher/publisher.compon
 import { SubscriberComponent } from './components/auth/subscriber/subscriber.component';
 import { OpentokService } from './services/opentok.service';
 
+import { CardComponent } from './components/public/card/card.component';
+import {FeatureManagementService} from './services/feature-management.service';
+
 
 
 @NgModule({
@@ -82,7 +85,8 @@ import { OpentokService } from './services/opentok.service';
     UserDetailsComponent,
     UserDetailsEditComponent,
     PublisherComponent,
-    SubscriberComponent
+    SubscriberComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -113,7 +117,13 @@ import { OpentokService } from './services/opentok.service';
   entryComponents: [
     UserDetailsEditComponent
   ],
-  providers: [AuthenticationService, LocationService, UserManagementService, OpentokService],
+  providers: [
+    AuthenticationService,
+    LocationService,
+    UserManagementService,
+    OpentokService,
+    FeatureManagementService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

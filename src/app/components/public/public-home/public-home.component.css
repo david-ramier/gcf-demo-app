@@ -1,0 +1,5 @@
+.card-container{
+  /*background-color: mat-color($custom-theme-accent, 300);*/
+  width: 100%;
+  justify-content: center;
+}
