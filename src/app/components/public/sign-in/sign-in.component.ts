@@ -36,6 +36,10 @@ export class SignInComponent implements OnInit {
   }
   */
 
+  onSignInWithGitHub() {
+
+  }
+
   private buildForm(): void {
     this.signInFormGroup = this.formBuilder.group({
       emailCtrl:            ['', [<any>Validators.required, <any>Validators.email] ],
